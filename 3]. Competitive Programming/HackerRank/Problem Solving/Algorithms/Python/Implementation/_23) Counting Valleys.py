@@ -22,18 +22,15 @@ def countingValleys(n, s):
                 valley_count += 1
         else:
             current_pos -= 1
-            
+
     return valley_count
     
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    with open(os.environ['OUTPUT_PATH'], 'w') as fptr:
+        n = int(input())
 
-    n = int(input())
+        s = input()
 
-    s = input()
+        result = countingValleys(n, s)
 
-    result = countingValleys(n, s)
-
-    fptr.write(str(result) + '\n')
-
-    fptr.close()
+        fptr.write(str(result) + '\n')

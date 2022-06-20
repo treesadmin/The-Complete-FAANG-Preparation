@@ -12,29 +12,23 @@ import sys
 
 # Complete the angryProfessor function below.
 def angryProfessor(k, a):
-    count = 0
-    for i in a:
-        if i <= 0:
-            count += 1
+    count = sum(i <= 0 for i in a)
     if count < k:
         return "YES"
     return "NO"
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    with open(os.environ['OUTPUT_PATH'], 'w') as fptr:
+        t = int(input())
 
-    t = int(input())
+        for _ in range(t):
+            nk = input().split()
 
-    for t_itr in range(t):
-        nk = input().split()
+            n = int(nk[0])
 
-        n = int(nk[0])
+            k = int(nk[1])
 
-        k = int(nk[1])
+            a = list(map(int, input().rstrip().split()))
 
-        a = list(map(int, input().rstrip().split()))
+            result = angryProfessor(k, a)
 
-        result = angryProfessor(k, a)
-
-        fptr.write(result + '\n')
-
-    fptr.close()
+            fptr.write(result + '\n')

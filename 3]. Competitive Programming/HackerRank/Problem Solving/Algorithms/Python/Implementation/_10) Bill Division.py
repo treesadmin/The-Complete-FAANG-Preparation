@@ -20,7 +20,7 @@ def bonAppetit(bill, k, b):
         else:
             b_actual += bill[i]
     b_actual = b_actual // 2
-    
+
     print("Bon Appetit" if b_actual == b_charged else b_charged - b_actual)
     return
 

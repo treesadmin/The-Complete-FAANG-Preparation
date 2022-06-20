@@ -12,16 +12,10 @@ import sys
 
 # Complete the countApplesAndOranges function below.
 def countApplesAndOranges(s, t, a, b, apples, oranges):
-    count_apple = 0
-    count_orange = 0
-    for i in range(len(apples)):
-        if a + apples[i] in range(s,t+1):
-            count_apple += 1
+    count_apple = sum(a + apples[i] in range(s,t+1) for i in range(len(apples)))
     print(count_apple)
 
-    for i in range(len(oranges)):
-        if b + oranges[i] in range(s,t+1):
-            count_orange += 1
+    count_orange = sum(b + oranges[i] in range(s,t+1) for i in range(len(oranges)))
     print(count_orange)
 
 if __name__ == '__main__':
