@@ -22,7 +22,7 @@ def plusMinus(arr):
             c_neg += 1
         if arr[i] == 0:
             c_zero += 1
-    
+
     print(c_pos / len(arr))
     print(c_neg / len(arr))
     print(c_zero / len(arr))

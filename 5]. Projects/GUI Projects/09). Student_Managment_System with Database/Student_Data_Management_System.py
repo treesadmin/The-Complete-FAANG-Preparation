@@ -131,8 +131,12 @@ def addstudent():
             strr =  'insert into studentdata1 values(%s,%s,%s,%s,%s,%s,%s,%s,%s)'
             mycursor.execute(strr,(id,name,mobile,email,address,gender,dob,addeddate,addedtime))
             con.commit()
-            res = messagebox.askyesnocancel("Notification", 'ID {} Name {} Added Successfully.....  and want to clean the form'.format(id, name),
-                                            parent=addroot)
+            res = messagebox.askyesnocancel(
+                "Notification",
+                f'ID {id} Name {name} Added Successfully.....  and want to clean the form',
+                parent=addroot,
+            )
+
             if res == True:
                 idval.set('')
                 nameval.set('')
@@ -399,7 +403,7 @@ def deletestudent():
     strr = 'delete from studentdata1 where id = %s'
     mycursor.execute(strr, (pp))
     con.commit()
-    messagebox.showinfo('Notification', 'Id {} deleted successfully...'.format(id))
+    messagebox.showinfo('Notification', f'Id {id} deleted successfully...')
     strr = 'select * from studentdata1'
     mycursor.execute(strr)
     datas = mycursor.fetchall()
@@ -424,7 +428,12 @@ def updatestudent():
         strr = 'update studentdata1 set name=%s, mobile=%s, email=%s, address=%s, gender=%s, dob=%s, date=%s,time=%s where id = %s'
         mycursor.execute(strr, (name, mobile, email, address, gender, dob, date, time, id))
         con.commit()
-        messagebox.showinfo("Notification", "Id {} Modified Successfully.....".format(id),parent=updateroot)
+        messagebox.showinfo(
+            "Notification",
+            f"Id {id} Modified Successfully.....",
+            parent=updateroot,
+        )
+
         strr = 'select * from studentdata1'
         mycursor.execute(strr)
         datas = mycursor.fetchall()
@@ -559,9 +568,9 @@ def exportstudent():
 
     dd = ['ID', 'Name', 'Mobile No.', 'Email', 'Address', 'Gender', 'D.O.B', 'Added Date', 'Added Time']
     df = pandas.DataFrame(list(zip(id, name, mobile, email, address, gender, dob, addeddate, addedtime)), columns=dd)
-    paths = r'{}.csv'.format(ff)
+    paths = f'{ff}.csv'
     df.to_csv(paths, index=False)
-    messagebox.showinfo('Notification', 'Student Data is saved {}'.format(paths))
+    messagebox.showinfo('Notification', f'Student Data is saved {paths}')
 
 def exitstudent():
     res = messagebox.askyesnocancel("Notification", "Do you want to Exit ?")

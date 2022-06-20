@@ -19,7 +19,7 @@ import sys
 #
 
 def insertionSort2(n, arr):
-    
+
     for i in range(1, n):
         element = arr[i]
         j = i - 1

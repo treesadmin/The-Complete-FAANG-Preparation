@@ -275,8 +275,6 @@ def open_file(event=None):
             text_editor.insert(1.0, tk.read())
     except FileNotFoundError:
         return
-    except:
-        return
     main_application.title(os.path.basename(url))
 
 file.add_command(label='Open', image=open_icon, compound=tk.LEFT, accelerator='Ctrl+O', command=open_file)
@@ -344,9 +342,9 @@ def find_func(event=None):
     def find():
         word = find_input.get()
         text_editor.tag_remove('match', '1.0', tk.END)
-        matches=0
         if word:
             start_pos = '1.0'
+            matches=0
             while True:
                 start_pos = text_editor.search(word, start_pos, stopindex=tk.END)
                 if not start_pos:
@@ -447,11 +445,8 @@ def change_theme():
     color_tuple = color_dict.get(chosen_theme)
     fg_color, bg_color = color_tuple[0], color_tuple[1]
     text_editor.config(background=bg_color, fg=fg_color)
-count=0
-for i in color_dict:
+for count, i in enumerate(color_dict):
     color_theme.add_radiobutton(label=i, image=color_icons[count], variable=theme_choice, compound=tk.LEFT, command=change_theme)
-    count += 1
-
 main_application.config(menu=main_menu)
 
 
